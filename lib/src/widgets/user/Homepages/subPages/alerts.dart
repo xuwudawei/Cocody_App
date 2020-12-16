@@ -197,18 +197,21 @@ class _AlertsPageState extends State<AlertsPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 17.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(0, 191, 192, 1),
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 14, horizontal: 12),
-                          child: Image.asset(
-                            'assets/images/phone.png',
-                            height: 65,
-                            width: 65,
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(0, 191, 192, 1),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 14, horizontal: 14),
+                            child: Image.asset(
+                              'assets/images/phone.png',
+                              height: 65,
+                              width: 65,
+                            ),
                           ),
                         ),
                       ),
