@@ -1,5 +1,6 @@
 import 'package:cocody/src/providers/NewsProvider.dart';
 import 'package:cocody/src/providers/botomNav.dart';
+import 'package:cocody/src/providers/sensibilationsProvider.dart';
 import 'package:cocody/src/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,9 @@ class _AppState extends State<App> {
         ),
         ChangeNotifierProvider(
           create: (_) => NewsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SensibilationsProvider(),
         ),
       ],
       child: MaterialApp(

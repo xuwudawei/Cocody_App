@@ -1,10 +1,14 @@
 import 'package:cocody/src/helper/NewsData.dart';
+import 'package:cocody/src/helper/sensibilationsData.dart';
 import 'package:cocody/src/models/newsCardModel.dart';
+import 'package:cocody/src/models/sensibilationsCardModel.dart';
 import 'package:cocody/src/providers/NewsProvider.dart';
 import 'package:cocody/src/providers/botomNav.dart';
+import 'package:cocody/src/providers/sensibilationsProvider.dart';
 import 'package:cocody/src/widgets/user/Homepages/subPages/alerts.dart';
 import 'package:cocody/src/widgets/user/Homepages/subPages/news.dart';
 import 'package:cocody/src/widgets/user/Homepages/subPages/sensibilations.dart';
+import 'package:cocody/src/widgets/user/Homepages/subPages/sensibilationsTile.dart';
 import 'package:cocody/src/widgets/user/Homepages/subPages/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,11 +29,12 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _appBarTitle = 'Actualités';
     fetchAllNews();
+    fetchAllSensibilations();
   }
 
   List<Widget> _widgetOptions = <Widget>[
     NewsPage(),
-    SensibilationsPage(),
+    SensibilationsTile(),
     AlertsPage(),
     SettingsPage(),
   ];
@@ -68,6 +73,14 @@ class _HomePageState extends State<HomePage> {
     var allNews = Provider.of<NewsProvider>(context, listen: false);
     List<NewsCardModel> news = getAllNews();
     allNews.setNews(news);
+    //print(allMessages.getAllMessages.length);
+  }
+
+  void fetchAllSensibilations() {
+    var allSensibilations =
+        Provider.of<SensibilationsProvider>(context, listen: false);
+    List<SensibilationsCardModel> sensibilations = getAllSensibilations();
+    allSensibilations.setSensibilations(sensibilations);
     //print(allMessages.getAllMessages.length);
   }
 

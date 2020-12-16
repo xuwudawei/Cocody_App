@@ -31,8 +31,9 @@ class NewsTile extends StatelessWidget {
         ),
         child: Container(
           decoration: BoxDecoration(
-              color: Color.fromRGBO(61, 61, 61, 0.04),
-              borderRadius: BorderRadius.circular(10)),
+            color: Color.fromRGBO(61, 61, 61, 0.04),
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Column(
             children: [
               Container(
