@@ -12,8 +12,8 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height.toInt();
     final screenWidth = MediaQuery.of(context).size.width.toInt();
-    print("height: " + screenHeight.toString());
-    print("Width: " + screenWidth.toString());
+    // print("height: " + screenHeight.toString());
+    // print("Width: " + screenWidth.toString());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(255, 255, 255, 1),
