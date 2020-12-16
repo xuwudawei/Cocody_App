@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _widgetOptions = <Widget>[
     NewsPage(),
-    SensibilationsTile(),
+    SensibilationsPage(),
     AlertsPage(),
     SettingsPage(),
   ];
