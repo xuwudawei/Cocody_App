@@ -5,6 +5,10 @@ class ViewSensibilisations extends StatelessWidget {
   ViewSensibilisations({Key key, @required this.data}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final intendedAmount =
+        double.parse(data["intendedAmount"].replaceAll(",", ""));
+    final currentAmount =
+        double.parse(data["currentAmount"].replaceAll(",", ""));
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(255, 255, 255, 1),
@@ -87,6 +91,33 @@ class ViewSensibilisations extends StatelessWidget {
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
                       ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10.0),
+                    child: Container(
+                      height: 50,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: new LinearProgressIndicator(
+                          value: currentAmount / intendedAmount,
+                          backgroundColor: Color.fromRGBO(229, 229, 229, 1),
+                          valueColor: new AlwaysStoppedAnimation<Color>(
+                            Color.fromRGBO(0, 191, 192, 1),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 30.0),
+                    child: Text(
+                      '120.000' + ' F  /  ' + '1.000.000' + ' F',
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Color.fromRGBO(0, 191, 192, 1),
+                          fontWeight: FontWeight.w400,
+                          decoration: TextDecoration.none),
                     ),
                   ),
                 ],
