@@ -1,3 +1,4 @@
+import 'package:cocody/src/widgets/user/Homepages/main.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -70,7 +71,7 @@ class _SignUp3State extends State<SignUp3> {
                   ),
                 ),
                 SizedBox(
-                  height: 27,
+                  height: 40,
                 ),
                 addressField(context),
                 SizedBox(
@@ -111,6 +112,74 @@ class _SignUp3State extends State<SignUp3> {
                           DateFormat("dd-MM-yyyy").format(date).toString();
                     },
                   ),
+                ),
+                SizedBox(
+                  height: 27,
+                ),
+                Row(
+                  children: <Widget>[
+                    GestureDetector(
+                      child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: Color.fromRGBO(0, 191, 192, 0.1),
+                        onPressed: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Icon(Icons.upload_file),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Ajouter votre CNI/Extrait de naissance",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black.withOpacity(0.5),
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 27,
+                ),
+                ButtonBar(
+                  buttonHeight: 47,
+                  buttonMinWidth: 160,
+                  buttonPadding: EdgeInsets.only(
+                    top: 11,
+                    bottom: 10,
+                  ),
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    RaisedButton(
+                      color: Color.fromRGBO(0, 191, 192, 1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 45, right: 45),
+                        child: Text(
+                          "Suivant",
+                          style: TextStyle(
+                            color: Color.fromRGBO(255, 253, 253, 1),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/login/home', (Route<dynamic> route) => false);
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 40,
                 ),
               ],
             ),
