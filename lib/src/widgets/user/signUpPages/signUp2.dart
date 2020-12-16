@@ -1,18 +1,18 @@
+import 'package:cocody/src/widgets/user/signUpPages/signUp3.dart';
 import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart' as vd;
 
-class Login extends StatefulWidget {
+class SignUp2 extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _SignUp2State createState() => _SignUp2State();
 }
 
-class _LoginState extends State<Login> {
-  var validEmail = null;
-  var email;
-  var validPassword = null;
-  var password;
-  bool invalid = false;
-  bool exist = true;
+class _SignUp2State extends State<SignUp2> {
+  var validName = null;
+  var userName;
+  var validFirstName = null;
+  var userFirstName;
+  var validPhone = null;
+  var userPhone;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,15 +39,15 @@ class _LoginState extends State<Login> {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(
-              left: 19,
-              right: 19,
+              left: 16,
+              right: 16,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 23),
+                  padding: const EdgeInsets.only(bottom: 27),
                   child: Container(
                     height: MediaQuery.of(context).size.height / 4.2,
                     width: MediaQuery.of(context).size.width / 1.58,
@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Text(
-                  "Pour commencer veuillez nous fournir des informations",
+                  "Votre bien être , notre vocation",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
@@ -63,29 +63,19 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(
-                  height: 39,
+                  height: 27,
                 ),
-                emailField(context),
+                nameField(context),
                 SizedBox(
-                  height: 39,
+                  height: 27,
                 ),
-                passwordField(context),
+                firstNameField(context),
                 SizedBox(
-                  height: 39,
+                  height: 27,
                 ),
-                GestureDetector(
-                  child: Text(
-                    "Mot de passe oublié ?",
-                    style: TextStyle(
-                      color: Color.fromRGBO(193, 0, 0, 1),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  onTap: () {},
-                ),
+                phoneField(context),
                 SizedBox(
-                  height: 39,
+                  height: 27,
                 ),
                 ButtonBar(
                   buttonHeight: 47,
@@ -110,12 +100,19 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignUp3(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 39,
+                  height: 40,
                 ),
               ],
             ),
@@ -137,51 +134,14 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget emailField(context) {
+  Widget nameField(context) {
     return Material(
       borderRadius: BorderRadius.all(Radius.circular(10)),
       color: Color.fromRGBO(0, 191, 192, 0.1),
       child: TextFormField(
         decoration: InputDecoration(
-          hintText: 'Entrer votre email',
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color.fromRGBO(0, 191, 192, 0.1))),
-          focusedErrorBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-          errorBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(horizontal: 27, vertical: 20),
-        ),
-        onSaved: (emails) {
-          this.email = emails;
-        },
-        autovalidate: true,
-        validator: (emails) => validEmail,
-        onChanged: (emails) {
-          if (vd.EmailValidator.validate(emails)) {
-            setState(() {
-              validEmail = null;
-            });
-          } else {
-            setState(() {
-              validEmail = "Please enter a valid email";
-            });
-          }
-        },
-      ),
-    );
-  }
-
-  Widget passwordField(context) {
-    return Material(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-      color: Color.fromRGBO(0, 191, 192, 0.1),
-      child: TextFormField(
-        obscureText: true,
-        decoration: InputDecoration(
-          hintText: 'Entrer votre mot de passe',
-          contentPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+          hintText: 'Entrer votre nom',
+          //enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: color)),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: Color.fromRGBO(0, 191, 192, 0.1),
@@ -191,16 +151,113 @@ class _LoginState extends State<Login> {
               OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
           errorBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+          contentPadding: EdgeInsets.symmetric(horizontal: 27, vertical: 20),
+
           border: InputBorder.none,
         ),
-        onSaved: (password) {
-          this.password = password;
+        onSaved: (username) {
+          this.userName = username;
         },
-        onChanged: (data) {
-          setState(() {
-            invalid = false;
-            exist = true;
-          });
+        autovalidate: true,
+        validator: (username) {
+          return validName;
+        },
+        onChanged: (username) {
+          if (username.isEmpty) {
+            setState(() {
+              validName = "Field required";
+            });
+          } else {
+            setState(() {
+              validName = null;
+            });
+          }
+        },
+      ),
+    );
+  }
+
+  Widget firstNameField(context) {
+    return Material(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+      color: Color.fromRGBO(0, 191, 192, 0.1),
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: 'Entrer votre prénom',
+          //enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: color)),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color.fromRGBO(0, 191, 192, 0.1),
+            ),
+          ),
+          focusedErrorBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+          errorBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+          contentPadding: EdgeInsets.symmetric(horizontal: 27, vertical: 20),
+
+          border: InputBorder.none,
+        ),
+        onSaved: (userFirstName) {
+          this.userFirstName = userFirstName;
+        },
+        autovalidate: true,
+        validator: (userFirstName) {
+          return validFirstName;
+        },
+        onChanged: (userFirstName) {
+          if (userFirstName.isEmpty) {
+            setState(() {
+              validFirstName = "Field required";
+            });
+          } else {
+            setState(() {
+              validFirstName = null;
+            });
+          }
+        },
+      ),
+    );
+  }
+
+  Widget phoneField(context) {
+    return Material(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+      color: Color.fromRGBO(0, 191, 192, 0.1),
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: 'Entrer votre numéro téléphone',
+          //enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: color)),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color.fromRGBO(0, 191, 192, 0.1),
+            ),
+          ),
+          focusedErrorBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+          errorBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+          contentPadding: EdgeInsets.symmetric(horizontal: 27, vertical: 20),
+
+          border: InputBorder.none,
+        ),
+        onSaved: (userphone) {
+          this.userPhone = userphone;
+        },
+        autovalidate: true,
+        validator: (userphone) {
+          return validPhone;
+        },
+        onChanged: (userphone) {
+          if (userphone.isEmpty) {
+            setState(() {
+              validPhone = "Field required";
+            });
+          } else {
+            setState(() {
+              validPhone = null;
+            });
+          }
         },
       ),
     );
