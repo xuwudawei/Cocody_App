@@ -4,7 +4,13 @@ class NewsCardModel {
   String content;
   String description;
   String date;
-
-  NewsCardModel(
-      {this.content, this.date, this.imageUrl, this.title, this.description});
+  String source;
+  NewsCardModel({
+    this.content,
+    this.date,
+    this.imageUrl,
+    this.title,
+    this.description,
+    this.source,
+  });
 }

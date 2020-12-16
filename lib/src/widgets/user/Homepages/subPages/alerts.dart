@@ -8,8 +8,6 @@ class AlertsPage extends StatefulWidget {
 class _AlertsPageState extends State<AlertsPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(),
-    );
+    return Scaffold();
   }
 }

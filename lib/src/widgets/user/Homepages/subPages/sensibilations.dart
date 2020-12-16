@@ -8,8 +8,6 @@ class SensibilationsPage extends StatefulWidget {
 class _SensibilationsPageState extends State<SensibilationsPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(),
-    );
+    return Scaffold();
   }
 }

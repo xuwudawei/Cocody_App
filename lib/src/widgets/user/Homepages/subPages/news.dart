@@ -12,28 +12,26 @@ class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     final myNews = Provider.of<NewsProvider>(context, listen: false);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Expanded(
-              child: ListView.builder(
-                itemCount: myNews.getAllNews.length,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (BuildContext context, int index) {
-                  return NewsTile(
-                    content: myNews.getAllNews[index].content,
-                    date: myNews.getAllNews[index].date,
-                    description: myNews.getAllNews[index].description,
-                    imageUrl: myNews.getAllNews[index].imageUrl,
-                    title: myNews.getAllNews[index].title,
-                  );
-                },
-              ),
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView.builder(
+              itemCount: myNews.getAllNews.length,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (BuildContext context, int index) {
+                return NewsTile(
+                  source: myNews.getAllNews[index].source,
+                  content: myNews.getAllNews[index].content,
+                  date: myNews.getAllNews[index].date,
+                  description: myNews.getAllNews[index].description,
+                  imageUrl: myNews.getAllNews[index].imageUrl,
+                  title: myNews.getAllNews[index].title,
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
